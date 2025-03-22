@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- box for sign up form -->
+
+    <div class="box">
+       <h1>Sign Up</h1>
+
+         <div class="inputbox">
+            <form method="post" action="signup.php">
+         <input class="name" type="text" placeholder="User Name">
+         </div>
+
+         <div class="inputbox">
+         <input class="name" type="password" placeholder="Password">
+         </div>
+        
+         <div class="submit">
+            <button class="button"><link rel="index2.html" > <a href="index2.html">submit</a></button>
+         </div>
+         <hr>
+         <div class="login">
+
+            <a href="index2.html">Login</a>
+
+         </div>
+
+
+
+    </div>
+    <script>
+        document.getElementById("signup-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const response = await fetch("http://localhost:5000/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+            alert(data.message);
+        });
+    </script>
+</body>
+
+
+</html>
